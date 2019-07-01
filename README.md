@@ -1,2 +1,2 @@
 # RPG-Game
-First complete game
+First top down RPG combat prototype 
