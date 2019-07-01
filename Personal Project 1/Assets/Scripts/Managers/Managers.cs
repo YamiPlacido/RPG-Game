@@ -4,10 +4,14 @@ using Assets.Scripts.Managers;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(PlayerManager))]
+[RequireComponent(typeof(InventoryManager))]
+[RequireComponent(typeof(SkillManager))]
 
 public class Managers : MonoBehaviour
 {
     public static PlayerManager Player { get; private set; }
+    public static InventoryManager Inventory { get;private set; }
+    public static SkillManager Skill { get; private set; }
 
     private List<IGameManager> _startSequence;
 
@@ -16,10 +20,14 @@ public class Managers : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         Player = GetComponent<PlayerManager>();
+        Inventory = GetComponent<InventoryManager>();
+        Skill = GetComponent<SkillManager>();
 
         _startSequence = new List<IGameManager>();
 
         _startSequence.Add(Player);
+        _startSequence.Add(Inventory);
+        _startSequence.Add(Skill);
 
         StartCoroutine(StartupManager());
     }

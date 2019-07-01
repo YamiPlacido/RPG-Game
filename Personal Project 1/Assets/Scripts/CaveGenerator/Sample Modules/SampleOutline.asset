@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18df1970a90b485438150b452e0202a2, type: 3}
+  m_Name: SampleOutline
+  m_EditorClassIdentifier: 
+  rockPrefabs:
+  - prefab: {fileID: 1000010357584986, guid: ff421997f346e314c82e73610f419ac1, type: 2}
+    weight: 1
+  - prefab: {fileID: 1000013218097322, guid: 838aed2c0bd6e074383add6c6e347995, type: 2}
+    weight: 2
+  - prefab: {fileID: 1000010932500912, guid: 46b49871773764447a894bbb1c459502, type: 2}
+    weight: 5
+  seed: -1729445422

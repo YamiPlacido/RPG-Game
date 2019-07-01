@@ -25,4 +25,9 @@ public class CharacterSelectionController : MonoBehaviour
     {
         SelectedCharacter.EquipWeapon(weaponPrefab);
     }
+
+    public void DropCurrentWeapon()
+    {
+        SelectedCharacter.DropWeapon();
+    }
 }

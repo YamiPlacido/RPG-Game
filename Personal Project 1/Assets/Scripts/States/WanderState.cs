@@ -33,6 +33,7 @@ namespace Assets.Scripts.States
             var chaseTarget = CheckForAggro();
             if (chaseTarget != null)
             {
+                _animator.SetBool("Walking", false);
                 _char.SetTarget(chaseTarget);
                 return typeof(ChaseState);
             }
@@ -50,7 +51,7 @@ namespace Assets.Scripts.States
             }
             else
             {
-                movement = Vector3.forward * 6f; ;     //moveSpeed = 6f
+                movement = Vector3.forward * 2f; ;     //walkSpeed = 3f
 
                 movement = transform.TransformDirection(movement);
             }
@@ -63,6 +64,7 @@ namespace Assets.Scripts.States
             }
 
             _animator.SetFloat("Speed", movement.sqrMagnitude);
+            _animator.SetBool("Walking", true);
             movement *= Time.deltaTime;
             _charController.Move(movement);
 
@@ -119,7 +121,7 @@ namespace Assets.Scripts.States
                 {
                     GameObject hitObject = hit.transform.gameObject;
                     var character = hitObject.GetComponent<Character>();
-                    if (character != null)
+                    if (character != null && character.tag == "Player")
                     {
                         Debug.DrawRay(pos, direction * hit.distance, Color.red);
                         return character.transform;

@@ -275,3 +275,5 @@ D:\Hy\7. Programming\Personal\Game\RPG-Game\Personal Project 1\Temp\bin\Debug\Sy
 D:\Hy\7. Programming\Personal\Game\RPG-Game\Personal Project 1\Temp\bin\Debug\System.Xml.XmlSerializer.dll
 D:\Hy\7. Programming\Personal\Game\RPG-Game\Personal Project 1\Temp\bin\Debug\System.Xml.XPath.dll
 D:\Hy\7. Programming\Personal\Game\RPG-Game\Personal Project 1\Temp\bin\Debug\System.Xml.XPath.XDocument.dll
+D:\Hy\7. Programming\Personal\Game\RPG-Game\Personal Project 1\Temp\bin\Debug\UnityEditor.UI.dll
+D:\Hy\7. Programming\Personal\Game\RPG-Game\Personal Project 1\Temp\bin\Debug\UnityEditor.UI.xml

@@ -20,7 +20,7 @@ namespace Assets.Scripts.States
 
         public override Type Tick()
         {
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit mouseHit;
@@ -31,6 +31,20 @@ namespace Assets.Scripts.States
                     {
                         _char.SetTarget(hitObject.transform);
                         return typeof(ChaseState);
+                    }
+                }
+            }
+
+            if (Input.GetMouseButton(1))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit mouseHit;
+                if (Physics.Raycast(ray, out mouseHit))
+                {
+                    GameObject hitObject = mouseHit.transform.gameObject;
+                    if (hitObject.tag == "Enemy")
+                    {
+                        _char.SetTarget(hitObject.transform);
                     }
                 }
             }

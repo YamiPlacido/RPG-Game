@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.States
 {
-    public abstract class BaseState
+    public abstract class BaseState 
     {
         protected GameObject gameObject;
         protected Transform transform;

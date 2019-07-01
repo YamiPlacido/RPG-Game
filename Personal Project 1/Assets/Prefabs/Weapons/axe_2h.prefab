@@ -97,3 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPosition: {x: 0.221, y: 0.037, z: 0.234}
   weaponRotation: {x: -12.631, y: 15.807, z: -95.028}
+  weaponAnimation: {fileID: 7400000, guid: 2b3b260c936ae6d4aadc751856005120, type: 3}
+  attackRange: 1.2
+  attackDamage: 6

@@ -8,7 +8,7 @@ namespace Assets.Scripts.Managers
 {
     interface IGameManager
     {
-        ManagerStatus status { get; set; }
+        ManagerStatus status { get; }
         void Startup(NetworkService service);
     }
 

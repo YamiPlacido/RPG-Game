@@ -38,14 +38,14 @@ public class PointClickMovement : MonoBehaviour
         //Horizontal movement
         Vector3 movement = Vector3.zero;
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit mouseHit;
             if (Physics.Raycast(ray, out mouseHit))
             {
                 GameObject hitObject = mouseHit.transform.gameObject;
-                if (hitObject.layer == LayerMask.NameToLayer("Ground"))
+                if (hitObject.layer == LayerMask.NameToLayer("Ground") || hitObject.tag == "Item")
                 {
                     _targetPos = mouseHit.point;
                     _curSpeed = moveSpeed;

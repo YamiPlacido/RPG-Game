@@ -35,7 +35,7 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    private void SwitchToNewState(Type nextState)
+    public void SwitchToNewState(Type nextState)
     {
         CurrentState = _availableStates[nextState];
         OnStateChanged?.Invoke(CurrentState);
