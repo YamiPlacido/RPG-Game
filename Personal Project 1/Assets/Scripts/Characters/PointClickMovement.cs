@@ -19,6 +19,7 @@ public class PointClickMovement : MonoBehaviour
     public float targetBuffer = 1.5f;
     private float _curSpeed = 0f;
     private Vector3 _targetPos = Vector3.one;
+    Vector3 movement = Vector3.zero;
 
     private Character _char;
     private CharacterController _charController;
@@ -36,8 +37,18 @@ public class PointClickMovement : MonoBehaviour
     void Update()
     {
         //Horizontal movement
-        Vector3 movement = Vector3.zero;
+        HorizontalMovement();
 
+        //Jumping/Vertical movement
+        VerticalMovement();
+
+        movement.y = _vertSpeed;
+        movement *= Time.deltaTime;
+        _charController.Move(movement);
+    }
+
+    private void HorizontalMovement()
+    {
         if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -77,12 +88,14 @@ public class PointClickMovement : MonoBehaviour
             }
         }
 
-        if(GetComponent<StateMachine>().CurrentState?.GetType() != typeof(ChaseState))
+        if (GetComponent<StateMachine>().CurrentState?.GetType() != typeof(ChaseState))
         {
             _animator.SetFloat("Speed", movement.sqrMagnitude);
         }
+    }
 
-        //Jumping/Vertical movement
+    private void VerticalMovement()
+    {
         bool hitGround = false;
         RaycastHit hit;
         if (_vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit))
@@ -101,23 +114,6 @@ public class PointClickMovement : MonoBehaviour
             {
                 _vertSpeed = minFall;
                 _animator.SetBool("Jumping", false);
-            }
-            //attack
-            if (Input.GetButtonDown("Fire2"))
-            {
-                //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                //if (Physics.SphereCast(ray,0.75f,out hit))
-                //{
-                //    Transform interactable = hit.collider.GetComponent<Interactable>().transform;
-
-                //    if(interactable != null)
-                //    {
-                //        _char.SetTarget(interactable);
-                //    }
-                //}
-
-                //_animator.SetTrigger("Attack");
             }
         }
         else
@@ -145,10 +141,6 @@ public class PointClickMovement : MonoBehaviour
                 }
             }
         }
-        movement.y = _vertSpeed;
-
-        movement *= Time.deltaTime;
-        _charController.Move(movement);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

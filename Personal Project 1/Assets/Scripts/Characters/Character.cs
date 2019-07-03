@@ -40,16 +40,35 @@ public class Character : MonoBehaviour
         _currentWeapon.transform.localPosition = _currentWeapon.weaponPosition;
         _currentWeapon.transform.localEulerAngles = _currentWeapon.weaponRotation;
 
-        if(_overrideAnimator == null)
+        OverrideAnimation();
+
+        AttackRange = _currentWeapon.attackRange;
+        AttackDamage = _currentWeapon.attackDamage;
+    }
+
+    private void OverrideAnimation()
+    {
+        if (_overrideAnimator == null)
         {
             _overrideAnimator = new AnimatorOverrideController(_animator.runtimeAnimatorController);
             _animator.runtimeAnimatorController = _overrideAnimator;
         }
-      
-        _overrideAnimator["punching"] = _currentWeapon.weaponAnimation;
 
-        AttackRange = _currentWeapon.attackRange;
-        AttackDamage = _currentWeapon.attackDamage;
+        _overrideAnimator["punching"] = _currentWeapon.weaponAnimation;
+    }
+
+    private void SetBasicPlayerStats()
+    {
+        AttackRange = 1f;
+        AttackDamage = 3;
+        AttackSpeed = 1f;
+    }
+
+    private void SetBasicEnemyStats()
+    {
+        AttackRange = 1.5f;
+        AttackDamage = 3;
+        AttackSpeed = 1f;
     }
 
     public void DropWeapon()
@@ -59,9 +78,7 @@ public class Character : MonoBehaviour
             Destroy(_currentWeapon.gameObject);
             _overrideAnimator["punching"] = null;
 
-            AttackRange = 1f;
-            AttackDamage = 3;
-            AttackSpeed = 1f;
+            SetBasicPlayerStats();
         }
     }
 
@@ -98,15 +115,11 @@ public class Character : MonoBehaviour
         }
         else if(gameObject.tag == "Player")
         {
-            AttackRange = 1f;
-            AttackDamage = 3;
-            AttackSpeed = 1f;
+            SetBasicPlayerStats();
         }
         else if(gameObject.tag == "Enemy")
         {
-            AttackRange = 1.5f;
-            AttackDamage = 3;
-            AttackSpeed = 1f;
+            SetBasicEnemyStats();
         }
         startPosition = transform.position;
         _currentHealth = _maxHealth;

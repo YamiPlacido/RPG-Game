@@ -197,7 +197,6 @@
     <Compile Include="Assets\Scripts\Characters\Combat.cs" />
     <Compile Include="Assets\Scripts\Characters\PointClickMovement.cs" />
     <Compile Include="Assets\Scripts\Characters\Weapon.cs" />
-    <Compile Include="Assets\Scripts\Controllers\SceneController.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIController.cs" />
     <Compile Include="Assets\Scripts\Devices\BaseDevice.cs" />
     <Compile Include="Assets\Scripts\Devices\CollectibleItem.cs" />
@@ -205,10 +204,8 @@
     <Compile Include="Assets\Scripts\Devices\DoorOpenDevice.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyGenerator.cs" />
-    <Compile Include="Assets\Scripts\EquipmentPopup.cs" />
     <Compile Include="Assets\Scripts\Events\Messenger.cs" />
     <Compile Include="Assets\Scripts\HitEffect.cs" />
-    <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Managers\IGameManager.cs" />

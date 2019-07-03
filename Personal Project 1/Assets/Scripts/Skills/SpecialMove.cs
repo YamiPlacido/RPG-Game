@@ -55,18 +55,23 @@ public class SpecialMove : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, other.transform.position - transform.position, out hit))
             {
-                Quaternion rot = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                Vector3 pos = hit.point;
-
-                if (hitPrefab != null)
-                {
-                    var hitVFX = Instantiate(hitPrefab, pos, rot);
-                }
+                OnHit(hit);
             }
             if (MassDestruction == false)
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void OnHit(RaycastHit hit)
+    {
+        Quaternion rot = Quaternion.FromToRotation(Vector3.up, hit.normal);
+        Vector3 pos = hit.point;
+
+        if (hitPrefab != null)
+        {
+            var hitVFX = Instantiate(hitPrefab, pos, rot);
         }
     }
 

@@ -33,10 +33,7 @@ public class Combat:MonoBehaviour
 
             if (atk != null)
             {
-                _fireball = Instantiate(atk, transform.position + atk.GetComponent<SpecialMove>().offsetPos, transform.rotation) as GameObject;
-                _fireball.transform.Rotate(Vector3.up * atk.GetComponent<SpecialMove>().yRotate);
-                _fireball.transform.Rotate(Vector3.forward * atk.GetComponent<SpecialMove>().xRotate);
-                _fireball.transform.Rotate(Vector3.right * atk.GetComponent<SpecialMove>().zRotate);
+                CreateProjectile(atk);
 
                 Rigidbody body = _fireball.GetComponent<Rigidbody>();
                 body.AddForce(transform.forward * atk.GetComponent<SpecialMove>().speed); //400
@@ -56,6 +53,14 @@ public class Combat:MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * atkRange, Color.yellow);
     }
 
+    private void CreateProjectile(GameObject atk)
+    {
+        _fireball = Instantiate(atk, transform.position + atk.GetComponent<SpecialMove>().offsetPos, transform.rotation) as GameObject;
+        _fireball.transform.Rotate(Vector3.up * atk.GetComponent<SpecialMove>().yRotate);
+        _fireball.transform.Rotate(Vector3.forward * atk.GetComponent<SpecialMove>().xRotate);
+        _fireball.transform.Rotate(Vector3.right * atk.GetComponent<SpecialMove>().zRotate);
+    }
+
     public void SpecialAttack(GameObject atk/*,float atkRange, int atkDamage, float atkSpeed*/)
     {
         transform.LookAt(_char.Target);
@@ -70,18 +75,12 @@ public class Combat:MonoBehaviour
 
                 if (atk != null)
                 {
-                    _fireball = Instantiate(atk,transform.position,transform.rotation) as GameObject;
-                    _fireball.transform.Rotate(Vector3.up * -90);
+                    CreateProjectile(atk);
+
                     Rigidbody body = _fireball.GetComponent<Rigidbody>();
                     body.AddForce(transform.forward * 400);
                     //Destroy(_fireball, 10.0f);
                 }
-
-                //StartCoroutine(DealDamage(hit, atkDamage, _attackDelay));
-                //Debug.Log(_char.Target.name + " takes " + atkDamage + " damage");
-                //bool isCriticalHit = Random.Range(0, 100) < 30;
-                //DamagePopup.CreatePopupDamage(pfDamagePopup, _char.Target.position, atkDamage, isCriticalHit);
-                //_attackCooldown = 1f / atkSpeed;
             }
         }
     }

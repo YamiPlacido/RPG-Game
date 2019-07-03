@@ -51,16 +51,6 @@ public class AttackState : BaseState
             }
         }
 
-
-
-        //float angle = 10;
-        //if (Vector3.Angle(transform.forward, _char.Target.position - transform.position) < angle)
-        //{
-        //    StartCoroutine(EnemyScan());
-        //    transform.LookAt(_char.Target.transform);
-        //}
-
-
         if (_attackReadyTimer <= 0f)
         {
             if(_char.tag == "Player")
